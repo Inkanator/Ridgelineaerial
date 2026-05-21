@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import emailjs from '@emailjs/browser'
 
 const serviceOptions = [
   'Real Estate MLS Photography',
@@ -21,7 +22,9 @@ export default function ContactClient() {
     message: '',
   })
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
   const [errors, setErrors] = useState<Partial<typeof form>>({})
+  const [sendError, setSendError] = useState('')
 
   function validate() {
     const e: Partial<typeof form> = {}
@@ -30,14 +33,35 @@ export default function ContactClient() {
     return e
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     const errs = validate()
     if (Object.keys(errs).length > 0) {
       setErrors(errs)
       return
     }
-    setSubmitted(true)
+
+    setSending(true)
+    setSendError('')
+
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          from_name: form.name,
+          phone: form.phone || 'Not provided',
+          service: form.service,
+          message: form.message || 'No message provided',
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      )
+      setSubmitted(true)
+    } catch {
+      setSendError('Something went wrong. Please call or text Ian directly at 423-956-1268.')
+    } finally {
+      setSending(false)
+    }
   }
 
   function handleChange(
@@ -196,11 +220,18 @@ export default function ContactClient() {
                 />
               </div>
 
+              {sendError && (
+                <p className="text-sm text-red-500 bg-red-50 border border-red-100 rounded-lg px-4 py-3">
+                  {sendError}
+                </p>
+              )}
+
               <button
                 type="submit"
-                className="w-full py-4 bg-gold hover:bg-gold-light text-navy font-semibold rounded-xl transition-colors text-sm"
+                disabled={sending}
+                className="w-full py-4 bg-gold hover:bg-gold-light disabled:opacity-60 disabled:cursor-not-allowed text-navy font-semibold rounded-xl transition-colors text-sm"
               >
-                Send Message
+                {sending ? 'Sending...' : 'Send Message'}
               </button>
 
               <p className="text-center text-sm text-gray-400">
