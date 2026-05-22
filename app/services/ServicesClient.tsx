@@ -127,7 +127,6 @@ function RealEstateTab() {
       <SectionCard title="Add-Ons">
         <PriceRow label="Twilight photos (3–5 pics)" price="$75" />
         <PriceRow label="Virtual staging (per image)" price="$20" />
-        <PriceRow label="Floorplan" price="$15–$25" />
         <PriceRow label="360° aerial panoramic" price="$20" />
       </SectionCard>
 
