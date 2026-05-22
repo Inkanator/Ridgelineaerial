@@ -87,6 +87,16 @@ export default function PortfolioClient() {
         ))}
       </div>
 
+      {/* About the work */}
+      <div className="mt-14 text-center max-w-2xl mx-auto">
+        <div className="w-12 h-px bg-gold mx-auto mb-6" />
+        <h3 className="font-playfair text-2xl text-navy font-semibold mb-3">Real Work. Real Shots.</h3>
+        <p className="text-gray-500 text-sm leading-relaxed">
+          Every photo and video in this portfolio was captured by myself on actual client jobs across East Tennessee —
+          no stock imagery, no filters. What you see is exactly the quality and style you can expect when you book with us.
+        </p>
+        <div className="w-12 h-px bg-gold mx-auto mt-6" />
+      </div>
     </div>
   )
 }
