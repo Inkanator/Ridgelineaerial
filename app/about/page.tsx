@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import DroneLogo from '@/components/DroneLogo'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'About',
@@ -28,9 +28,16 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
           {/* Left — Profile */}
           <div className="flex flex-col items-center text-center lg:sticky lg:top-24">
-            {/* Avatar circle with drone logo */}
-            <div className="w-48 h-48 rounded-full bg-navy flex items-center justify-center mb-6 shadow-xl ring-4 ring-gold/30">
-              <DroneLogo size={96} showMountains />
+            {/* Portrait photo */}
+            <div className="w-48 h-48 rounded-full overflow-hidden mb-6 shadow-xl ring-4 ring-gold/30">
+              <Image
+                src="/IMG_1757.jpeg"
+                alt="Ian Robertson — Owner & Drone Pilot at Ridgeline Aerial"
+                width={192}
+                height={192}
+                className="w-full h-full object-cover object-top"
+                priority
+              />
             </div>
             <h2 className="font-playfair text-3xl text-navy font-bold">Ian Robertson</h2>
             <p className="text-sky-brand font-semibold mt-1 mb-4">Owner &amp; Drone Pilot</p>
@@ -47,14 +54,14 @@ export default function AboutPage() {
                 423-956-1268
               </a>
               <a
-                href="mailto:iango4053@gmail.com"
+                href="mailto:yourpictures@ridgelineaerial.org"
                 className="flex items-center gap-3 px-5 py-3 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-colors text-sm font-medium"
               >
                 <svg className="w-4 h-4 text-sky-brand shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                   <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                 </svg>
-                iango4053@gmail.com
+                yourpictures@ridgelineaerial.org
               </a>
             </div>
           </div>

@@ -27,8 +27,8 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="mailto:iango4053@gmail.com" className="hover:text-gold transition-colors">
-                  ✉️ iango4053@gmail.com
+                <a href="mailto:yourpictures@ridgelineaerial.org" className="hover:text-gold transition-colors">
+                  ✉️ yourpictures@ridgelineaerial.org
                 </a>
               </li>
               <li className="flex items-center gap-2">

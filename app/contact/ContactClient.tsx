@@ -105,8 +105,8 @@ export default function ContactClient() {
             </div>
             <div>
               <p className="text-xs text-gray-400 mb-0.5">Email</p>
-              <a href="mailto:iango4053@gmail.com" className="text-navy font-medium hover:text-gold transition-colors text-sm">
-                iango4053@gmail.com
+              <a href="mailto:yourpictures@ridgelineaerial.org" className="text-navy font-medium hover:text-gold transition-colors text-sm">
+                yourpictures@ridgelineaerial.org
               </a>
             </div>
           </div>
