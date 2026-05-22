@@ -104,6 +104,25 @@ function RealEstateTab() {
         </SectionCard>
       </div>
 
+      {/* Social Media Video */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <SectionCard title="Drone Promo Video → Social Media Edit">
+          <PriceRow label="15-second highlight" price="$30" />
+          <PriceRow label="30-second highlight" price="$60" />
+          <div className="mt-3 bg-gold/10 rounded-lg px-4 py-2 text-xs text-gold-dark font-medium">
+            💡 Add-on to any drone video package
+          </div>
+        </SectionCard>
+
+        <SectionCard title="Social Media Drone Video Only">
+          <PriceRow label="15 seconds" price="$60" />
+          <PriceRow label="30 seconds" price="$100" />
+          <div className="mt-3 bg-gold/10 rounded-lg px-4 py-2 text-xs text-gold-dark font-medium">
+            📱 Vertical or square format — ready to post
+          </div>
+        </SectionCard>
+      </div>
+
       {/* Add-Ons */}
       <SectionCard title="Add-Ons">
         <PriceRow label="Twilight photos (3–5 pics)" price="$75" />
@@ -207,6 +226,30 @@ function GeneralServicesTab() {
             <PriceRow label="2 min land tour" price="$250" />
             <div className="mt-3 bg-gold/10 rounded-lg px-4 py-2 text-xs text-gold-dark font-medium">
               🌿 Great for land listings, hunting leases &amp; personal keepsakes
+            </div>
+          </SectionCard>
+        </div>
+      </div>
+
+      {/* Social Media */}
+      <div>
+        <h2 className="font-playfair text-2xl text-navy font-bold mb-4">
+          Social Media Clips
+        </h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <SectionCard title="Drone Promo Video → Social Media Edit">
+            <PriceRow label="15-second highlight" price="$30" />
+            <PriceRow label="30-second highlight" price="$60" />
+            <div className="mt-3 bg-gold/10 rounded-lg px-4 py-2 text-xs text-gold-dark font-medium">
+              💡 Add-on to any video package
+            </div>
+          </SectionCard>
+
+          <SectionCard title="Social Media Drone Video Only">
+            <PriceRow label="15 seconds" price="$100" />
+            <PriceRow label="30 seconds" price="$200" />
+            <div className="mt-3 bg-gold/10 rounded-lg px-4 py-2 text-xs text-gold-dark font-medium">
+              📱 Vertical or square format — ready to post
             </div>
           </SectionCard>
         </div>
