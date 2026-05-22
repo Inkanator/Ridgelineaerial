@@ -143,7 +143,10 @@ export default function HomePage() {
       <section className="py-20 px-4 bg-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-playfair text-4xl text-navy font-bold mb-4">Ready to Book?</h2>
-          <p className="text-gray-500 mb-8">Call or text Ian directly — fast response guaranteed.</p>
+          <p className="text-gray-500 mb-8">
+            Call or text Ian directly — fast response guaranteed.
+          </p>
+          <p className="text-gray-400 text-sm mb-2">If calling, please leave a message and Ian will get back to you within a few hours.</p>
           <a
             href="tel:4239561268"
             className="inline-block font-playfair text-4xl sm:text-5xl font-bold text-navy hover:text-gold transition-colors mb-8"

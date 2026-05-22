@@ -93,6 +93,7 @@ export default function ContactClient() {
               423-956-1268
             </a>
             <p className="text-white/50 text-sm">Available 7 days a week — usually responds within a few hours</p>
+            <p className="text-white/40 text-xs mt-2">If calling, please leave a message and Ian will get back to you within a few hours.</p>
           </div>
 
           {/* Email */}
