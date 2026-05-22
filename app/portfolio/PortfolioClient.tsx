@@ -87,14 +87,6 @@ export default function PortfolioClient() {
         ))}
       </div>
 
-      {/* Coming soon note */}
-      <div className="mt-14 text-center bg-gray-50 rounded-2xl py-10 px-6 border border-gray-100">
-        <div className="text-4xl mb-3">📸</div>
-        <h3 className="font-playfair text-xl text-navy font-semibold mb-2">Portfolio images will appear here once uploaded</h3>
-        <p className="text-gray-500 text-sm max-w-md mx-auto">
-          Real project photos and videos will replace these placeholders as work is completed. Check back soon.
-        </p>
-      </div>
     </div>
   )
 }
