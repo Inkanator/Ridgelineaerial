@@ -169,9 +169,13 @@ function GeneralServicesTab() {
         </h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <SectionCard title="Drone Photos">
-            <PriceRow label="Up to 1 hour" price="$150" />
-            <PriceRow label="Up to 2 hours" price="$250" />
-            <PriceRow label="Half day" price="$400" />
+            <PriceRow label="1 hour" price="$150" />
+            <PriceRow label="2 hours" price="$300" />
+            <PriceRow label="3 hours" price="$450" />
+            <PriceRow label="4 hours" price="$600" />
+            <PriceRow label="5 hours" price="$750" />
+            <PriceRow label="6 hours" price="$900" />
+            <PriceRow label="More than 6 hours" price="Call for quote" />
           </SectionCard>
 
           <SectionCard title="Video (w/ Full Editing)">
