@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
-import { redirect } from 'next/navigation'
 import PaymentClient from './PaymentClient'
+import PaymentEntry from './PaymentEntry'
 import DroneLogo from '@/components/DroneLogo'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Secure Payment | Ridgeline Aerial',
+  title: 'Pay Invoice | Ridgeline Aerial',
   description: 'Pay for your Ridgeline Aerial drone photography or video session securely online.',
 }
 
@@ -17,10 +17,7 @@ export default async function PayPage({ searchParams }: Props) {
   const params = await searchParams
   const amount = parseFloat(params.amount ?? '')
   const description = params.desc ?? 'Ridgeline Aerial Service'
-
-  if (isNaN(amount) || amount <= 0) {
-    redirect('/')
-  }
+  const hasValidAmount = !isNaN(amount) && amount > 0
 
   return (
     <div className="min-h-screen bg-gray-50 pt-16">
@@ -32,13 +29,17 @@ export default async function PayPage({ searchParams }: Props) {
             Ridgeline Aerial
           </span>
         </Link>
-        <h1 className="font-playfair text-3xl text-white font-bold mt-2">Secure Payment</h1>
+        <h1 className="font-playfair text-3xl text-white font-bold mt-2">Pay Invoice</h1>
       </div>
 
-      {/* Payment card */}
+      {/* Content */}
       <div className="max-w-lg mx-auto px-4 py-12">
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-          <PaymentClient amount={amount} description={description} />
+          {hasValidAmount ? (
+            <PaymentClient amount={amount} description={description} />
+          ) : (
+            <PaymentEntry />
+          )}
         </div>
 
         <p className="text-center text-xs text-gray-400 mt-6">

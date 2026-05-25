@@ -11,6 +11,7 @@ const navLinks = [
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
+  { href: '/pay', label: 'Pay Invoice' },
 ]
 
 export default function Navbar() {
