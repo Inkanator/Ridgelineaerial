@@ -21,9 +21,16 @@ export default function PaymentEntry() {
   return (
     <div>
       <h2 className="font-playfair text-2xl text-navy font-bold mb-2">Enter Your Invoice Amount</h2>
-      <p className="text-gray-500 text-sm mb-6">
+      <p className="text-gray-500 text-sm mb-4">
         Ian will provide you with the amount due. Enter it below to pay securely.
       </p>
+
+      <div className="bg-gold/10 border border-gold/30 rounded-xl px-4 py-3 mb-6">
+        <p className="text-xs font-semibold text-navy mb-1">💰 Deposit Policy</p>
+        <p className="text-xs text-gray-600 leading-relaxed">
+          A $100 deposit is required to confirm and schedule your session. Should you need to cancel, or if the final deliverables don't meet your expectations, that deposit is returned to you in full — no questions asked. When everything goes smoothly, the $100 is simply applied toward your total. A receipt will be sent to your preferred email upon payment.
+        </p>
+      </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>

@@ -134,6 +134,19 @@ function RealEstateTab() {
         <TravelAndGoodToKnow />
       </div>
 
+      {/* Deposit Policy */}
+      <div className="bg-gold/10 border border-gold/30 rounded-xl px-6 py-5">
+        <div className="flex items-start gap-3">
+          <span className="text-gold text-xl mt-0.5">💰</span>
+          <div>
+            <p className="font-playfair text-navy text-lg font-semibold mb-1">$100 Deposit Required</p>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              A $100 deposit is required to confirm and schedule your session. Should you need to cancel, or if the final deliverables don't meet your expectations, that deposit is returned to you in full — no questions asked. When everything goes smoothly, the $100 is simply applied toward your total. A receipt will be sent to your preferred email upon payment.
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Cancellation */}
       <div className="bg-navy rounded-xl px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
@@ -256,6 +269,19 @@ function GeneralServicesTab() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <TravelAndGoodToKnow />
+      </div>
+
+      {/* Deposit Policy */}
+      <div className="bg-gold/10 border border-gold/30 rounded-xl px-6 py-5">
+        <div className="flex items-start gap-3">
+          <span className="text-gold text-xl mt-0.5">💰</span>
+          <div>
+            <p className="font-playfair text-navy text-lg font-semibold mb-1">$100 Deposit Required</p>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              A $100 deposit is required to confirm and schedule your session. Should you need to cancel, or if the final deliverables don't meet your expectations, that deposit is returned to you in full — no questions asked. When everything goes smoothly, the $100 is simply applied toward your total. A receipt will be sent to your preferred email upon payment.
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Cancellation */}
