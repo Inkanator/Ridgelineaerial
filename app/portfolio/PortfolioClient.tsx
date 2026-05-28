@@ -6,19 +6,23 @@ type Category = 'All' | 'Real Estate' | 'Events' | 'Land & Outdoor' | 'Commercia
 
 const categories: Category[] = ['All', 'Real Estate', 'Events', 'Land & Outdoor', 'Commercial']
 
-const placeholderCards = [
-  { id: 1, category: 'Real Estate', gradient: 'from-navy to-sky-brand', aspect: 'aspect-[4/3]' },
-  { id: 2, category: 'Land & Outdoor', gradient: 'from-emerald-800 to-emerald-500', aspect: 'aspect-square' },
-  { id: 3, category: 'Events', gradient: 'from-purple-900 to-purple-500', aspect: 'aspect-[4/3]' },
-  { id: 4, category: 'Commercial', gradient: 'from-gray-800 to-gray-500', aspect: 'aspect-[3/4]' },
-  { id: 5, category: 'Real Estate', gradient: 'from-navy-dark to-navy', aspect: 'aspect-[4/3]' },
-  { id: 6, category: 'Land & Outdoor', gradient: 'from-green-900 to-teal-600', aspect: 'aspect-[4/3]' },
-  { id: 7, category: 'Events', gradient: 'from-rose-900 to-rose-500', aspect: 'aspect-square' },
-  { id: 8, category: 'Commercial', gradient: 'from-slate-800 to-blue-700', aspect: 'aspect-[4/3]' },
-  { id: 9, category: 'Real Estate', gradient: 'from-sky-900 to-sky-600', aspect: 'aspect-[3/4]' },
-  { id: 10, category: 'Land & Outdoor', gradient: 'from-lime-900 to-lime-600', aspect: 'aspect-[4/3]' },
-  { id: 11, category: 'Commercial', gradient: 'from-zinc-800 to-zinc-500', aspect: 'aspect-[4/3]' },
-  { id: 12, category: 'Events', gradient: 'from-violet-900 to-violet-500', aspect: 'aspect-square' },
+type MediaCard =
+  | { id: number; type: 'placeholder'; category: Category; gradient: string; aspect: string }
+  | { id: number; type: 'video'; category: Category; src: string; aspect: string; label: string }
+
+const allCards: MediaCard[] = [
+  { id: 1, type: 'placeholder', category: 'Real Estate', gradient: 'from-navy to-sky-brand', aspect: 'aspect-[4/3]' },
+  { id: 2, type: 'video', category: 'Land & Outdoor', src: '/Sequence 01.mp4', aspect: 'aspect-[16/9]', label: 'Land & Outdoor' },
+  { id: 3, type: 'placeholder', category: 'Events', gradient: 'from-purple-900 to-purple-500', aspect: 'aspect-[4/3]' },
+  { id: 4, type: 'placeholder', category: 'Commercial', gradient: 'from-gray-800 to-gray-500', aspect: 'aspect-[3/4]' },
+  { id: 5, type: 'placeholder', category: 'Real Estate', gradient: 'from-navy-dark to-navy', aspect: 'aspect-[4/3]' },
+  { id: 6, type: 'placeholder', category: 'Land & Outdoor', gradient: 'from-green-900 to-teal-600', aspect: 'aspect-[4/3]' },
+  { id: 7, type: 'placeholder', category: 'Events', gradient: 'from-rose-900 to-rose-500', aspect: 'aspect-square' },
+  { id: 8, type: 'placeholder', category: 'Commercial', gradient: 'from-slate-800 to-blue-700', aspect: 'aspect-[4/3]' },
+  { id: 9, type: 'placeholder', category: 'Real Estate', gradient: 'from-sky-900 to-sky-600', aspect: 'aspect-[3/4]' },
+  { id: 10, type: 'placeholder', category: 'Land & Outdoor', gradient: 'from-lime-900 to-lime-600', aspect: 'aspect-[4/3]' },
+  { id: 11, type: 'placeholder', category: 'Commercial', gradient: 'from-zinc-800 to-zinc-500', aspect: 'aspect-[4/3]' },
+  { id: 12, type: 'placeholder', category: 'Events', gradient: 'from-violet-900 to-violet-500', aspect: 'aspect-square' },
 ]
 
 function DroneIcon() {
@@ -41,8 +45,7 @@ function DroneIcon() {
 export default function PortfolioClient() {
   const [filter, setFilter] = useState<Category>('All')
 
-  const filtered =
-    filter === 'All' ? placeholderCards : placeholderCards.filter((c) => c.category === filter)
+  const filtered = filter === 'All' ? allCards : allCards.filter((c) => c.category === filter)
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
@@ -70,11 +73,24 @@ export default function PortfolioClient() {
             key={card.id}
             className={`break-inside-avoid ${card.aspect} relative rounded-xl overflow-hidden group cursor-pointer`}
           >
-            <div className={`w-full h-full bg-gradient-to-br ${card.gradient} min-h-[200px]`} />
-            {/* Drone icon overlay */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <DroneIcon />
-            </div>
+            {card.type === 'video' ? (
+              <video
+                src={card.src}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover min-h-[200px]"
+              />
+            ) : (
+              <>
+                <div className={`w-full h-full bg-gradient-to-br ${card.gradient} min-h-[200px]`} />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <DroneIcon />
+                </div>
+              </>
+            )}
+
             {/* Hover overlay */}
             <div className="absolute inset-0 bg-navy/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span className="text-white font-semibold text-sm tracking-wide">{card.category}</span>
