@@ -1,105 +1,68 @@
 'use client'
 
-import { useState } from 'react'
-
-type Category = 'All' | 'Real Estate' | 'Events' | 'Land & Outdoor' | 'Commercial'
-
-const categories: Category[] = ['All', 'Real Estate', 'Events', 'Land & Outdoor', 'Commercial']
-
 type MediaCard =
-  | { id: number; type: 'placeholder'; category: Category; gradient: string; aspect: string }
-  | { id: number; type: 'video'; category: Category; src: string; aspect: string; label: string }
+  | { id: number; type: 'placeholder'; gradient: string; label: string }
+  | { id: number; type: 'video'; src: string; label: string }
 
 const allCards: MediaCard[] = [
-  { id: 1, type: 'placeholder', category: 'Real Estate', gradient: 'from-navy to-sky-brand', aspect: 'aspect-[4/3]' },
-  { id: 2, type: 'video', category: 'Land & Outdoor', src: '/Sequence 01.mp4', aspect: 'aspect-[16/9]', label: 'Land & Outdoor' },
-  { id: 3, type: 'placeholder', category: 'Events', gradient: 'from-purple-900 to-purple-500', aspect: 'aspect-[4/3]' },
-  { id: 4, type: 'placeholder', category: 'Commercial', gradient: 'from-gray-800 to-gray-500', aspect: 'aspect-[3/4]' },
-  { id: 5, type: 'placeholder', category: 'Real Estate', gradient: 'from-navy-dark to-navy', aspect: 'aspect-[4/3]' },
-  { id: 6, type: 'placeholder', category: 'Land & Outdoor', gradient: 'from-green-900 to-teal-600', aspect: 'aspect-[4/3]' },
-  { id: 7, type: 'placeholder', category: 'Events', gradient: 'from-rose-900 to-rose-500', aspect: 'aspect-square' },
-  { id: 8, type: 'placeholder', category: 'Commercial', gradient: 'from-slate-800 to-blue-700', aspect: 'aspect-[4/3]' },
-  { id: 9, type: 'placeholder', category: 'Real Estate', gradient: 'from-sky-900 to-sky-600', aspect: 'aspect-[3/4]' },
-  { id: 10, type: 'placeholder', category: 'Land & Outdoor', gradient: 'from-lime-900 to-lime-600', aspect: 'aspect-[4/3]' },
-  { id: 11, type: 'placeholder', category: 'Commercial', gradient: 'from-zinc-800 to-zinc-500', aspect: 'aspect-[4/3]' },
-  { id: 12, type: 'placeholder', category: 'Events', gradient: 'from-violet-900 to-violet-500', aspect: 'aspect-square' },
+  { id: 1, type: 'video', src: '/Sequence 01.mp4', label: 'Land & Outdoor' },
+  { id: 2, type: 'placeholder', gradient: 'from-navy to-sky-brand', label: 'Real Estate' },
+  { id: 3, type: 'placeholder', gradient: 'from-purple-900 to-purple-500', label: 'Events' },
+  { id: 4, type: 'placeholder', gradient: 'from-gray-800 to-gray-500', label: 'Commercial' },
 ]
 
-function DroneIcon() {
+function ComingSoonOverlay({ label }: { label: string }) {
   return (
-    <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-40">
-      <line x1="50" y1="44" x2="22" y2="28" stroke="white" strokeWidth="4" strokeLinecap="round" />
-      <line x1="50" y1="44" x2="78" y2="28" stroke="white" strokeWidth="4" strokeLinecap="round" />
-      <line x1="50" y1="56" x2="22" y2="72" stroke="white" strokeWidth="4" strokeLinecap="round" />
-      <line x1="50" y1="56" x2="78" y2="72" stroke="white" strokeWidth="4" strokeLinecap="round" />
-      <ellipse cx="22" cy="25" rx="13" ry="5" fill="white" />
-      <ellipse cx="78" cy="25" rx="13" ry="5" fill="white" />
-      <ellipse cx="22" cy="75" rx="13" ry="5" fill="white" />
-      <ellipse cx="78" cy="75" rx="13" ry="5" fill="white" />
-      <rect x="34" y="40" width="32" height="20" rx="5" fill="white" opacity="0.6" />
-      <circle cx="50" cy="64" r="5" fill="white" opacity="0.4" />
-    </svg>
+    <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+      <svg width="36" height="36" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-30">
+        <line x1="50" y1="44" x2="22" y2="28" stroke="white" strokeWidth="4" strokeLinecap="round" />
+        <line x1="50" y1="44" x2="78" y2="28" stroke="white" strokeWidth="4" strokeLinecap="round" />
+        <line x1="50" y1="56" x2="22" y2="72" stroke="white" strokeWidth="4" strokeLinecap="round" />
+        <line x1="50" y1="56" x2="78" y2="72" stroke="white" strokeWidth="4" strokeLinecap="round" />
+        <ellipse cx="22" cy="25" rx="13" ry="5" fill="white" />
+        <ellipse cx="78" cy="25" rx="13" ry="5" fill="white" />
+        <ellipse cx="22" cy="75" rx="13" ry="5" fill="white" />
+        <ellipse cx="78" cy="75" rx="13" ry="5" fill="white" />
+        <rect x="34" y="40" width="32" height="20" rx="5" fill="white" opacity="0.6" />
+        <circle cx="50" cy="64" r="5" fill="white" opacity="0.4" />
+      </svg>
+      <span className="text-white/40 text-xs tracking-widest uppercase font-semibold">{label} — Coming Soon</span>
+    </div>
+  )
+}
+
+function ShowcaseCard({ card }: { card: MediaCard }) {
+  return (
+    <div className="relative w-full aspect-[16/7] rounded-2xl overflow-hidden group cursor-pointer shadow-lg">
+      {card.type === 'video' ? (
+        <video
+          src={card.src}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        />
+      ) : (
+        <>
+          <div className={`w-full h-full bg-gradient-to-br ${card.gradient}`} />
+          <ComingSoonOverlay label={card.label} />
+        </>
+      )}
+      <div className="absolute top-4 right-4 bg-gold/90 text-navy text-xs font-bold px-3 py-1 rounded-full tracking-wide">
+        FEATURED
+      </div>
+    </div>
   )
 }
 
 export default function PortfolioClient() {
-  const [filter, setFilter] = useState<Category>('All')
-
-  const filtered = filter === 'All' ? allCards : allCards.filter((c) => c.category === filter)
-
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
-      {/* Filter buttons */}
-      <div className="flex flex-wrap gap-3 mb-10 justify-center">
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setFilter(cat)}
-            className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors ${
-              filter === cat
-                ? 'bg-navy text-white'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-            }`}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
-
-      {/* Masonry-style grid */}
-      <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
-        {filtered.map((card) => (
-          <div
-            key={card.id}
-            className={`break-inside-avoid ${card.aspect} relative rounded-xl overflow-hidden group cursor-pointer`}
-          >
-            {card.type === 'video' ? (
-              <video
-                src={card.src}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-cover min-h-[200px]"
-              />
-            ) : (
-              <>
-                <div className={`w-full h-full bg-gradient-to-br ${card.gradient} min-h-[200px]`} />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <DroneIcon />
-                </div>
-              </>
-            )}
-
-            {/* Hover overlay */}
-            <div className="absolute inset-0 bg-navy/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <span className="text-white font-semibold text-sm tracking-wide">{card.category}</span>
-            </div>
-            {/* Category chip */}
-            <div className="absolute top-3 left-3 bg-black/40 backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full">
-              {card.category}
-            </div>
-          </div>
+      {/* Showcase cards — all full width */}
+      <div className="flex flex-col gap-4">
+        {allCards.map((card) => (
+          <ShowcaseCard key={card.id} card={card} />
         ))}
       </div>
 
