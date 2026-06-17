@@ -2,11 +2,13 @@
 
 type MediaCard = { id: number; src: string; label: string }
 
+const S3 = 'https://ridgeline-media-687346587814-us-east-2-an.s3.us-east-2.amazonaws.com'
+
 const allCards: MediaCard[] = [
-  { id: 1, src: '/Sequence 01.mp4', label: 'Land & Outdoor' },
-  { id: 2, src: '/Rays House.mov', label: 'Real Estate' },
-  { id: 3, src: '/EMS base 3.mov', label: 'Commercial' },
-  { id: 4, src: '/above vilas.mov', label: 'Land & Outdoor' },
+  { id: 1, src: `${S3}/Above House.mp4`, label: 'Land & Outdoor' },
+  { id: 2, src: `${S3}/Rays House.mov`, label: 'Real Estate' },
+  { id: 3, src: `${S3}/EMS base 3.mov`, label: 'Commercial' },
+  { id: 4, src: `${S3}/above vilas.mov`, label: 'Land & Outdoor' },
 ]
 
 function ShowcaseCard({ card }: { card: MediaCard }) {
