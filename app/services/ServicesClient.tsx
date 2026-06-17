@@ -52,6 +52,10 @@ function TravelAndGoodToKnow() {
           </li>
           <li className="flex items-start gap-2">
             <span className="text-gold mt-0.5">✓</span>
+            Videos may appear lower quality when streamed — download for full resolution
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="text-gold mt-0.5">✓</span>
             2–3 business day turnaround on most packages
           </li>
           <li className="flex items-start gap-2">
@@ -70,11 +74,11 @@ function RealEstateTab() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* MLS Photography */}
         <SectionCard title="MLS Photography (by sq ft)">
-          <PriceRow label="Under 2,000 sq ft" price="$110" />
-          <PriceRow label="2,000–3,000 sq ft" price="$120" />
-          <PriceRow label="3,000–4,000 sq ft" price="$160" />
-          <PriceRow label="4,000–5,000 sq ft" price="$210" />
-          <PriceRow label="Over 5,000 sq ft" price="$260" />
+          <PriceRow label="Under 2,000 sq ft" price="$125" />
+          <PriceRow label="2,000–3,000 sq ft" price="$150" />
+          <PriceRow label="3,000–4,000 sq ft" price="$175" />
+          <PriceRow label="4,000–5,000 sq ft" price="$250" />
+          <PriceRow label="Over 5,000 sq ft" price="Call for quote" />
         </SectionCard>
 
         {/* Aerial Drone Photos */}
@@ -83,9 +87,6 @@ function RealEstateTab() {
           <PriceRow label="5–50 acres" price="$90" />
           <PriceRow label="51–100 acres" price="$120" />
           <PriceRow label="Over 100 acres" price="Call for quote" />
-          <div className="mt-3 bg-gold/10 rounded-lg px-4 py-2 text-xs text-gold-dark font-medium">
-            💡 Add aerial to an MLS package and save $15
-          </div>
         </SectionCard>
       </div>
 
@@ -127,7 +128,6 @@ function RealEstateTab() {
       <SectionCard title="Add-Ons">
         <PriceRow label="Twilight photos (3–5 pics)" price="$75" />
         <PriceRow label="Virtual staging (per image)" price="$20" />
-        <PriceRow label="360° aerial panoramic" price="$20" />
       </SectionCard>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
